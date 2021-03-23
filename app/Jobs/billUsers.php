@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class billUsers implements ShouldQueue
 {
@@ -35,11 +36,11 @@ class billUsers implements ShouldQueue
     {
         $token = env('PAYSTACK-AUTH-TOKEN');
         Redis::throttle('key')->allow(500)->every(120)->then(function () {
-                // $response = Http::withToken($token)->post('https://api.paystack.co/transaction/charge_authorization', [
-                //     'authorization_code' => $this->user->auth_code,
-                //     'email' => $this->user->email,
-                //     'amount' => $this->user->amount_to_bill,
-                // ]);
+                $response = Http::withToken($token)->post('https://api.paystack.co/transaction/charge_authorization', [
+                    'authorization_code' => $this->user->auth_code,
+                    'email' => $this->user->email,
+                    'amount' => $this->user->amount_to_bill,
+                ]);
                 Log::info('message dispatched');
             
         }, function(){

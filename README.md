@@ -13,6 +13,15 @@ within 1hr.
 ## Laravel Queue: 
 I made us of Laravel Queue + Redis. aravel allows you to easily create queued jobs that may be processed in the background. By moving time intensive tasks to a queue, your application can respond to web requests with blazing speed and provide a better user experience to your customers.
 
+For this challenge I used Paystack's billing api
+
+To replicate this project on your system. Do the following: 
+- Clone this project - git clone https://github.com/Momohpheel/hollatags.git
+- Create a new schema in your database, let it be named "hollatags"
+- run these script on your terminals 
+- php artisan migrate
+- php artisan queue:work (run this whwnever you're about to bill users)
 
 
-
+Also suggest an approach to scale the above if you need to bill 100,000 users within 4.5hrs
+- Laravel also provides with the ability to put jobs into batches (Job Batching) which helps to split jobs into different batches

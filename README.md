@@ -24,4 +24,4 @@ To replicate this project on your system. Do the following:
 
 
 Also suggest an approach to scale the above if you need to bill 100,000 users within 4.5hrs
-- Laravel also provides with the ability to put jobs into batches (Job Batching) which helps to split jobs into different batches
+- Laravel also provides with the ability to put jobs into batches (Job Batching) which helps to split jobs into different batches, I believe this functionality will help run more requests at a very short time.
